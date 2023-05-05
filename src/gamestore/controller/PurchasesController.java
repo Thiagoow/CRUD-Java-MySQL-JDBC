@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import gamestore.model.bean.Purchases;
 import gamestore.model.dao.DaoPurchases;
 
-public class ControllerPurchases {
+public class PurchasesController {
     DaoPurchases daoCOMP = null;
 
     public Purchases delete(Purchases comp) throws SQLException, ClassNotFoundException {
@@ -18,12 +18,12 @@ public class ControllerPurchases {
         return daoCOMP.update(comp);
     }
     
-    public List<Purchases> list(Purchases comp) throws SQLException, ClassNotFoundException, Exception {
+    public List<Purchases> list(Purchases comp) throws Exception {
         daoCOMP = new DaoPurchases();
         List<Purchases> Purchases = daoCOMP.list(comp);
         
         if(Purchases == null) {
-            throw new Exception("Não tem Purchases cadastrados!");
+            throw new Exception("No purchases from this customer!");
         }
         return Purchases;  
     }

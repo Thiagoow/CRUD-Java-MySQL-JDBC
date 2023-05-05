@@ -18,26 +18,20 @@ public class GameStore {
     public static void menu() throws SQLException, ClassNotFoundException {
         int option = Integer.parseInt(JOptionPane.showInputDialog("0 - Sair \n 1 - Cliente \n 2 - Games \n 3 - Compras"));
         switch (option) {
-            case 0:
+            case 0 -> {
                 int sair = JOptionPane.showConfirmDialog(null, "Deseja Sair");
                 if (sair > 0) {
                     menu();
                 }
                 System.out.println("Se sim, escolha: " + sair);
-                break;
-            case 1:
-                KeepClients.menu();
-                break;
-            case 2:
-                KeepGames.menu();
-                break;
-            case 3:
-                KeepPurchases.menu();
-                break;
-            default:        
+            }
+            case 1 -> KeepClients.menu();
+            case 2 -> KeepGames.menu();
+            case 3 -> KeepPurchases.menu();
+            default -> {
                 JOptionPane.showMessageDialog(null, "Error - Invalid option");
                 menu();
-                break;
+            }
         }
     }
 

@@ -1,20 +1,16 @@
 package gamestore.model.dao;
 
-import gamestore.util.Connection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import gamestore.model.bean.Purchases;
+import gamestore.util.DbConnection;
 
 public class DaoPurchases {
     private final Connection c;
 
     public DaoPurchases() throws SQLException, ClassNotFoundException {
-        this.c = new Connection().getConnection();
+        this.c = new DbConnection().getConnection();
     }
 
     public Purchases insert(Purchases ins) throws SQLException {
@@ -59,15 +55,15 @@ public class DaoPurchases {
         return retorno;
     }
 
-    public Purchases alterar(Purchases comp) throws SQLException {
+    public Purchases update(Purchases comp) throws SQLException {
         System.out.println(comp.getId());
         String sql = "UPDATE purchases SET total_value = ?, id_games = ?, id_customers = ? WHERE id_purchases = ?";
         // prepared statement para inserção
         PreparedStatement COMP = c.prepareStatement(sql);
         // seta os valores
-        COMP.setDouble(1, ins.getTotal_value());
-        COMP.setInt(2, ins.getId_games());
-        COMP.setInt(3, ins.getId_customers());
+        COMP.setDouble(1, comp.getTotal_value());
+        COMP.setInt(2, comp.getId_games());
+        COMP.setInt(3, comp.getId_customers());
         COMP.setInt(4, comp.getId());
 
         // executa
@@ -76,7 +72,7 @@ public class DaoPurchases {
         return comp;
     }
 
-    public Purchases excluir(Purchases comp) throws SQLException {
+    public Purchases delete(Purchases comp) throws SQLException {
         String sql = "delete from purchases WHERE id_purchases = ?";
         // prepared statement para inserção
         PreparedStatement COMP = c.prepareStatement(sql);
@@ -89,7 +85,7 @@ public class DaoPurchases {
         return comp;
     }
 
-    public List<Purchases> listar(Purchases compEntrada) throws SQLException {
+    public List<Purchases> list(Purchases compEntrada) throws SQLException {
         // usus: array armazena a lista de registros
 
         List<Purchases> listacomp = new ArrayList<>();

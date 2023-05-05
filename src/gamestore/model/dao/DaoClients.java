@@ -1,12 +1,8 @@
 package gamestore.model.dao;
-
 import gamestore.model.bean.Clients;
-import gamestore.util.Connection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import gamestore.util.DbConnection;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +10,7 @@ public class DaoClients {
     private final Connection c;
     
     public DaoClients() throws SQLException, ClassNotFoundException{
-        this.c = new Connection().getConnection();
+        this.c = new DbConnection().getConnection();
     }
 
     public Clients delete(Clients clEntrada) throws SQLException {
@@ -26,7 +22,7 @@ public class DaoClients {
         // executa
         cli.execute();
         cli.close();
-        c.close();
+        cli.close();
         return clEntrada;
     }
 
@@ -127,5 +123,34 @@ public class DaoClients {
         
         return listacl;
     }
-    
+
+    public Clients validate(Clients cli) throws SQLException {
+        // cria o select para ser executado no banco de dados
+        String sql = "select * from usuarios WHERE login = ? AND senha = ?";
+        // prepared statement para seleção
+        PreparedStatement stmt = this.c.prepareStatement(sql);
+        // seta os valores
+        stmt.setString(1, cli.getUsername());
+        stmt.setString(2, cli.getPassword());
+        // executa
+        ResultSet rs = stmt.executeQuery();
+        // percorrendo o rs
+        Clients retorno = null;
+        while (rs.next()) {
+            // criando o objeto Usuario
+            retorno = new Clients(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5)
+            );
+            // adiciona o usu à lista de usus
+        }
+        stmt.close();
+        assert retorno != null;
+        System.out.println("Cliente: " + retorno.toString());
+
+        return retorno;
+    }
 }

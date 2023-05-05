@@ -7,14 +7,13 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class KeepClients {
-    
     static ClientsController clientControl;
     
     public static void delete() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        Clients clientEntry = new Clients(id);
+        Clients entry = new Clients(id);
         clientControl = new ClientsController();
-        Clients clientEntry = clientControl.delete(clientEntry);
+        Clients clientEntry = clientControl.delete(entry);
         JOptionPane.showMessageDialog(null, clientEntry.toString());
     }
 
@@ -68,16 +67,13 @@ public class KeepClients {
     }
     
     public static boolean validate() throws SQLException, ClassNotFoundException {
-        boolean validate = false;
+        boolean validatedUser;
         String username = JOptionPane.showInputDialog("Username");
         String password = JOptionPane.showInputDialog("Senha");
         Clients userEntry = new Clients(username, password);
 
-        clientControl = new UserController();
+        clientControl = new ClientsController();
         validatedUser = clientControl.validate(userEntry);
-        if (validatedUser != null) {
-            validate = true;
-        }
         JOptionPane.showMessageDialog(null, "Cliente: " + validatedUser);
         return validatedUser;
     }
@@ -85,30 +81,20 @@ public class KeepClients {
     public static void menu() throws SQLException, ClassNotFoundException {
         int option = Integer.parseInt(JOptionPane.showInputDialog("0 - Sair \n 1 - Inserir \n 2 - Alterar \n 3 - Excluir \n 4 - Buscar \n 5 - Listar"));
         switch (option) {
-            case 0:
-               int sair = JOptionPane.showConfirmDialog(null,"Deseja Sair");
-               System.out.println("Se sim, escolha: " + sair);
-               if(sair > 0) menu();
-               break;
-            case 1:
-               insert();
-               break;
-           case 2:
-               update();
-               break;
-           case 3:
-               delete();
-               break;
-           case 4:
-               search();
-               break;
-           case 5:
-               list();
-               break;
-           default:
-               JOptionPane.showMessageDialog(null,"Error - Invalid option");
-               menu();
-               break;
+            case 0 -> {
+                int sair = JOptionPane.showConfirmDialog(null, "Deseja Sair");
+                System.out.println("Se sim, escolha: " + sair);
+                if (sair > 0) menu();
+            }
+            case 1 -> insert();
+            case 2 -> update();
+            case 3 -> delete();
+            case 4 -> search();
+            case 5 -> list();
+            default -> {
+                JOptionPane.showMessageDialog(null, "Error - Invalid option");
+                menu();
+            }
         }
     }
 }

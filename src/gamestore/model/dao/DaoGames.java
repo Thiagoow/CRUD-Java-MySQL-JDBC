@@ -1,6 +1,5 @@
 package gamestore.model.dao;
 
-import gamestore.util.Connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,12 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import gamestore.model.bean.Games;
+import gamestore.util.DbConnection;
 
 public class DaoGames {
     private final Connection c;
 
     public DaoGames() throws SQLException, ClassNotFoundException {
-        this.c = new Connection().getConnection();
+        this.c = new DbConnection().getConnection();
     }
 
     public Games insert(Games ins) throws SQLException {

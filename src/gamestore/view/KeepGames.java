@@ -42,53 +42,43 @@ public class KeepGames {
         JOptionPane.showMessageDialog(null, gameOutput.toString());
     }
 
-    public static void listar() throws SQLException, ClassNotFoundException {
-        String name = JOptionPane.showInputDialog(null, "Bome");
+    public static void list() throws SQLException, ClassNotFoundException {
+        String name = JOptionPane.showInputDialog(null, "Nome");
         Games gameEntry = new Games(name);
 
         gamesControl = new GamesController();
-        List<Games> listOutput = gamesControl.listar(gameEntry);
+        List<Games> listOutput = gamesControl.list(gameEntry);
         for (Games ins : listOutput) {
             JOptionPane.showMessageDialog(null, ins.toString());
         }
     }
 
-    public static void excluir() throws SQLException, ClassNotFoundException {
+    public static void delete() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
         Games gameEntry = new Games(id);
         
         gamesControl = new GamesController();
-        Games gameOutput = gamesControl.excluir(gameEntry);
+        Games gameOutput = gamesControl.delete(gameEntry);
         JOptionPane.showMessageDialog(null, gameOutput.toString());
     }
 
     public static void menu() throws SQLException, ClassNotFoundException {
         int option = Integer.parseInt(JOptionPane.showInputDialog("0 - Sair \n 1 - Inserir \n 2 - Alterar \n 3 - Excluir \n 4 - Buscar \n 5 - Listar"));
         switch (option) {
-            case 0:
-               int sair = JOptionPane.showConfirmDialog(null,"Deseja Sair");
-               System.out.println("Se sim, escolha: " + sair);
-               if(sair > 0) menu();
-               break;
-            case 1:
-               insert();
-               break;
-           case 2:
-               update();
-               break;
-           case 3:
-               delete();
-               break;
-           case 4:
-               search();
-               break;
-           case 5:
-               list();
-               break;
-           default:
-               JOptionPane.showMessageDialog(null,"Error - Invalid option");
-               menu();
-               break;
+            case 0 -> {
+                int sair = JOptionPane.showConfirmDialog(null, "Deseja Sair");
+                System.out.println("Se sim, escolha: " + sair);
+                if (sair > 0) menu();
+            }
+            case 1 -> insert();
+            case 2 -> update();
+            case 3 -> delete();
+            case 4 -> search();
+            case 5 -> list();
+            default -> {
+                JOptionPane.showMessageDialog(null, "Error - Invalid option");
+                menu();
+            }
         }
     }
 }
