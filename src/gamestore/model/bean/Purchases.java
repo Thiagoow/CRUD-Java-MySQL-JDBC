@@ -53,6 +53,6 @@ public class Purchases {
 
     @Override
     public String toString() {
-        return "Purchases{" + "id=" + id + ", total_value=" + total_value + ", id_games=" + id_games + ", id_customers=" + id_customers}';
+        return "Purchases{" + "id=" + id + ", total_value=" + total_value + ", id_games=" + id_games + ", id_customers=" + id_customers + '}';
     }
 }

@@ -47,8 +47,7 @@ public class DaoPurchases {
                     rs.getInt(1),
                     rs.getDouble(2),
                     rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getString(5)
+                    rs.getInt(4)
             );
         }
         COMP.close();
@@ -103,8 +102,7 @@ public class DaoPurchases {
                 rs.getInt(1),
                 rs.getDouble(2),
                 rs.getInt(3),
-                rs.getInt(4), 
-                rs.getString(5)
+                rs.getInt(4)
             );
             // adiciona o usu à lista de usus
             listacomp.add(compr);

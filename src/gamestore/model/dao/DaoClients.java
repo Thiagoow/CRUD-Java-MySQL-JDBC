@@ -43,7 +43,7 @@ public class DaoClients {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6)
-                    rs.getString(7));
+                );
             // adiciona o usu à lista de usus
             }
             cli.close();
@@ -97,7 +97,7 @@ public class DaoClients {
         // usus: array armazena a lista de registros
         List<Clients> listacl = new ArrayList<>();
         
-        String sql = "select * from clients where nome like ?";
+        String sql = "select * from clients where name like ?";
         PreparedStatement cli = this.c.prepareStatement(sql);
         // seta os valores
         cli.setString(1,"%" + clEntrada.getName() + "%");
@@ -126,7 +126,7 @@ public class DaoClients {
 
     public Clients validate(Clients cli) throws SQLException {
         // cria o select para ser executado no banco de dados
-        String sql = "select * from usuarios WHERE login = ? AND senha = ?";
+        String sql = "select * from clients WHERE username = ? AND password = ?";
         // prepared statement para seleção
         PreparedStatement stmt = this.c.prepareStatement(sql);
         // seta os valores
@@ -143,7 +143,8 @@ public class DaoClients {
                     rs.getString(2),
                     rs.getString(3),
                     rs.getString(4),
-                    rs.getString(5)
+                    rs.getString(5),
+                    rs.getString(6)
             );
             // adiciona o usu à lista de usus
         }

@@ -14,7 +14,7 @@ public class KeepGames {
         String name = JOptionPane.showInputDialog("Nome");
         String value = JOptionPane.showInputDialog("Valor");
         String type = JOptionPane.showInputDialog("Tipo");
-        Games gameEntry = new Games(name, value, type);
+        Games gameEntry = new Games(name, Double.parseDouble(value), type);
 
         gamesControl = new GamesController();
         Games gameOutput = gamesControl.insert(gameEntry);
@@ -64,21 +64,32 @@ public class KeepGames {
 
     public static void menu() throws SQLException, ClassNotFoundException {
         int option = Integer.parseInt(JOptionPane.showInputDialog("0 - Sair \n 1 - Inserir \n 2 - Alterar \n 3 - Excluir \n 4 - Buscar \n 5 - Listar"));
+        
         switch (option) {
-            case 0 -> {
+            case 0:
                 int sair = JOptionPane.showConfirmDialog(null, "Deseja Sair");
                 System.out.println("Se sim, escolha: " + sair);
                 if (sair > 0) menu();
-            }
-            case 1 -> insert();
-            case 2 -> update();
-            case 3 -> delete();
-            case 4 -> search();
-            case 5 -> list();
-            default -> {
+                break;
+            case 1:
+                insert();
+                break;
+            case 2: 
+                update();
+                break;
+            case 3:
+                delete();
+                break;
+            case 4:
+                search();
+                break;
+            case 5:
+                list();
+                break;
+            default:
                 JOptionPane.showMessageDialog(null, "Error - Invalid option");
                 menu();
-            }
+                break;
         }
     }
 }

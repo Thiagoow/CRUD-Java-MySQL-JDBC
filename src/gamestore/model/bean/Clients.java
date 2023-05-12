@@ -15,6 +15,11 @@ public class Clients {
     public Clients(String name) {
         this.name = name;
     }
+    
+    public Clients(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public Clients(String username, String password, String name, String cpf, String email) {
         this.username = username;
