@@ -8,10 +8,10 @@ public class DbConnection {
     public Connection getConnection() throws SQLException, ClassNotFoundException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/gamestore";
+            String dbUrl = "jdbc:mysql://localhost:3306/gamestore";
             String dbUserLogin = "root";
             String dbUserPassword = "root";
-            return DriverManager.getConnection(dbUserLogin, dbUserPassword, null);
+            return DriverManager.getConnection(dbUrl, dbUserPassword, dbUserPassword);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
