@@ -89,10 +89,10 @@ public class DaoPurchases {
 
         List<Purchases> listacomp = new ArrayList<>();
         
-        String sql = "select * from purchases where id_customers like ?";
+        String sql = "select * from purchases where id_customers = ?";
         PreparedStatement comp_ = this.c.prepareStatement(sql);
         // seta os valores
-        comp_.setString(1,"%" + compEntrada.getId_customers()+ "%");
+        comp_.setInt(1, compEntrada.getId_customers());
         
         ResultSet rs = comp_.executeQuery();
         
