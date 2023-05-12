@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class DbConnection {
     public Connection getConnection() throws SQLException, ClassNotFoundException {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/gamestore";
-            String user = "root";
-            // String senha = "admin";
-            return DriverManager.getConnection(url, user, null);
+            String dbUserLogin = "root";
+            String dbUserPassword = "root";
+            return DriverManager.getConnection(dbUserLogin, dbUserPassword, null);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
