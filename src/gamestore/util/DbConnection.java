@@ -11,7 +11,7 @@ public class DbConnection {
             String dbUrl = "jdbc:mysql://localhost:3306/gamestore";
             String dbUserLogin = "root";
             String dbUserPassword = "root";
-            return DriverManager.getConnection(dbUrl, dbUserPassword, dbUserPassword);
+            return DriverManager.getConnection(dbUrl, dbUserLogin, dbUserPassword);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
