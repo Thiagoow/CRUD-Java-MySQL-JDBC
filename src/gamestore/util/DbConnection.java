@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnection {
-    public Connection getConnection() throws SQLException, ClassNotFoundException {
+    public Connection getConnection() throws ClassNotFoundException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String dbUrl = "jdbc:mysql://localhost:3306/gamestore";
