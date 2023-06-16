@@ -49,4 +49,10 @@ public class ClientsController {
         }
         return validated;
     }
+
+    public Clients validateWeb(Clients usuEntrada) throws SQLException, ClassNotFoundException {
+        daoCli = new DaoClients();
+        Clients cliSaida = daoCli.validate(usuEntrada);
+        return cliSaida;
+    }
 }

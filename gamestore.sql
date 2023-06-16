@@ -32,8 +32,8 @@ create table gamestore.purchases (
 ALTER TABLE gamestore.purchases ADD CONSTRAINT FK_PURCHASESCUSTOMERS_ID FOREIGN KEY (id_customers) REFERENCES clients (ID);
 ALTER TABLE gamestore.purchases ADD CONSTRAINT FK_PURCHASESGAMES_ID FOREIGN KEY (id_games) REFERENCES games (ID);
 
-INSERT INTO `gamestore`.`clients` (`username`, `password`, `name`, `cpf`, `email`) VALUES ('Thi', '123456', 'Thiago Lopes', '123456789', 'thiagolopes@email.com');
-INSERT INTO `gamestore`.`clients` (`username`, `password`, `name`, `cpf`, `email`) VALUES ('Gui', '123456', 'Guilherme Silva', '9123456789', 'guisilva@email.com');
+INSERT INTO `gamestore`.`clients` (`username`, `password`, `name`, `cpf`, `email`, `status`, `type`) VALUES ('Thi', '123456', 'Thiago Lopes', '123456789', 'thiagolopes@email.com', 'ativo', 'ADM');
+INSERT INTO `gamestore`.`clients` (`username`, `password`, `name`, `cpf`, `email`, `status`, `type`) VALUES ('Gui', '123456', 'Guilherme Silva', '9123456789', 'guisilva@email.com', 'ativo', 'USER');
 
 INSERT INTO `gamestore`.`games` (`name`, `value`, `type`) VALUES ('Red Dead Redemption 2', 400, 'PC');
 INSERT INTO `gamestore`.`games` (`name`, `value`, `type`) VALUES ('God Of War', 200, 'PS4');

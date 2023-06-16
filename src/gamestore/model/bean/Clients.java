@@ -7,6 +7,8 @@ public class Clients {
     private String name;
     private String cpf;
     private String email;
+    private String type;
+    private String status;
 
     public Clients(int id) {
         this.id = id;
@@ -80,8 +82,22 @@ public class Clients {
         this.email = email;
     }
 
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", cpf=" + cpf + ", email=" + email + '}';
+        return "Cliente{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", cpf=" + cpf + ", email=" + email + ", type=" + type + ", status=" + status + '}';
     }
 }
