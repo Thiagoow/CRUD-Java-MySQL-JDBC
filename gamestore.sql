@@ -1,5 +1,4 @@
 drop database gamestore;
-
 create database gamestore;
 
 USE gamestore;
@@ -11,6 +10,8 @@ create table gamestore.clients (
   name VARCHAR(255),
   cpf VARCHAR(255),
   email VARCHAR(255),
+  status VARCHAR(255),
+  type VARCHAR(255),
   primary key (id)
 );
 
