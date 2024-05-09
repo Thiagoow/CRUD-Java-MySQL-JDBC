@@ -6,7 +6,7 @@ import gamestore.model.bean.Clients;
 import gamestore.model.dao.DaoClients;
 
 public class ClientsController {
-    DaoClients daoCli = null;
+    DaoClients daoCli;
 
     public Clients delete(Clients cl) throws SQLException, ClassNotFoundException {
         daoCli = new DaoClients();
@@ -42,17 +42,14 @@ public class ClientsController {
         boolean validated = false;
         daoCli = new DaoClients();
         Clients cliSaida = daoCli.validate(usuEntrada);
-        if (usuEntrada.getUsername().equals(cliSaida.getUsername())) {
-            if (usuEntrada.getPassword().equals(cliSaida.getPassword())) {
-                validated = true;
-            }
+        if (cliSaida != null) {
+            validated = true;
         }
         return validated;
     }
 
     public Clients validateWeb(Clients usuEntrada) throws SQLException, ClassNotFoundException {
         daoCli = new DaoClients();
-        Clients cliSaida = daoCli.validate(usuEntrada);
-        return cliSaida;
+        return daoCli.validate(usuEntrada);
     }
 }

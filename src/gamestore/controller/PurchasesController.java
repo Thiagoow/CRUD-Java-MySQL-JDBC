@@ -6,21 +6,21 @@ import gamestore.model.bean.Purchases;
 import gamestore.model.dao.DaoPurchases;
 
 public class PurchasesController {
-    DaoPurchases daoCOMP = null;
+    DaoPurchases daoPurchases;
 
     public Purchases delete(Purchases comp) throws SQLException, ClassNotFoundException {
-        daoCOMP = new DaoPurchases();
-        return daoCOMP.delete(comp);
+        daoPurchases = new DaoPurchases();
+        return daoPurchases.delete(comp);
     }
 
     public Purchases update(Purchases comp) throws SQLException, ClassNotFoundException {
-        daoCOMP = new DaoPurchases();
-        return daoCOMP.update(comp);
+        daoPurchases = new DaoPurchases();
+        return daoPurchases.update(comp);
     }
     
     public List<Purchases> list(Purchases comp) throws Exception {
-        daoCOMP = new DaoPurchases();
-        List<Purchases> Purchases = daoCOMP.list(comp);
+        daoPurchases = new DaoPurchases();
+        List<Purchases> Purchases = daoPurchases.list(comp);
         
         if(Purchases == null) {
             throw new Exception("No purchases from this customer!");
@@ -29,12 +29,12 @@ public class PurchasesController {
     }
 
     public Purchases search(Purchases comp) throws SQLException, ClassNotFoundException {
-        daoCOMP = new DaoPurchases();
-        return daoCOMP.search(comp);
+        daoPurchases = new DaoPurchases();
+        return daoPurchases.search(comp);
     }
 
     public Purchases insert(Purchases comp) throws SQLException, ClassNotFoundException {
-        daoCOMP = new DaoPurchases();
-        return daoCOMP.insert(comp);
+        daoPurchases = new DaoPurchases();
+        return daoPurchases.insert(comp);
     }
 }
